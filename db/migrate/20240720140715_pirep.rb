@@ -1,0 +1,85 @@
+class Pirep < ActiveRecord::Migration[7.1]
+  def change
+    create_table :pireps do |t|
+      t.string :user
+      t.string :pass
+      t.string :auth
+      t.decimal :version
+      t.string :aircraft
+      t.string :atcmodel
+      t.string :atc_identifier
+      t.string :atc_flight_number
+      t.string :atc_airline
+      t.string :atc_type
+      t.decimal :origin_latitude
+      t.decimal :origin_longitude
+      t.decimal :destination_latitude
+      t.decimal :destination_longitude
+      t.decimal :landing_latitude
+      t.decimal :landing_longitude
+      t.string :direct_nm
+      t.string :actual_nm
+      t.string :date_short
+      t.string :date_stamp
+      t.string :timeout
+      t.string :timeoff
+      t.string :timeon
+      t.string :timein
+      t.string :fstime_out
+      t.string :fstime_off
+      t.string :fstime_on
+      t.string :fstime_in
+      t.string :block_time
+      t.decimal :fuel_start
+      t.decimal :fuel_stop
+      t.decimal :fuel_diff
+      t.string :time_of_day
+      t.string :landing_flight_rules
+      t.decimal :landing_speed
+      t.decimal :landing_rate
+      t.decimal :takeoff_weight
+      t.decimal :landing_weight
+      t.text :pirep_flight_comments
+      t.string :pause
+      t.string :slew
+      t.string :stall
+      t.string :over_speed
+      t.string :speed_below_10k
+      t.string :sim_rate
+      t.string :refuel
+      t.string :crashed
+      t.string :no_fuel
+      t.string :warp_in_nm
+      t.string :fuel_jettison
+      t.string :takeoff_flight_rule
+      t.string :takeoff_wind
+      t.string :landing_wind
+      t.string :payload
+      t.string :fs_version
+      t.string :oew
+      t.string :zfw
+      t.string :rollout
+      t.string :block_fuel
+      t.string :enroute_fuel
+      t.string :taxi_fuel
+      t.string :gmax
+      t.string :gmin
+      t.string :takeoff_headingwind
+      t.string :takeoff_crosswind
+      t.string :landing_headingwind
+      t.string :landing_crosswind
+      t.string :average_enroute_wind
+      t.string :takeoff_flaps
+      t.string :landing_flaps
+      t.string :max_taxi_speed_takeoff
+      t.string :max_taxi_speed_landing
+      t.string :takeoff_airspeed
+      t.string :true_landing_heading
+      t.string :multifpm
+      t.string :fpm_array
+      t.string :fpm_string
+
+      t.timestamps
+    end
+  end
+end

@@ -1,0 +1,47 @@
+services:
+  db:
+    image: mysql
+    container_name: modern_va_admin_db
+    volumes:
+      - ./tmp/db:/var/lib/mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: modern_va_admin_db
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+    ports:
+      - "3307:3306"
+    networks:
+      - modern_va_admin
+
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: bash -c "rm -f tmp/pids/server.pid && bundle install && rails s -b '0.0.0.0' -p '3000'"
+    stdin_open: true
+    tty: true
+    volumes:
+      - .:/home/app
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+    links:
+      - db
+    environment:
+      DB_USER: root
+      DB_NAME: modern_va_admin
+      DB_PASSWORD: password
+      DB_HOST: db
+    networks:
+      - modern_va_admin
+
+volumes:
+  db_data:
+    driver: local
+
+networks:
+  modern_va_admin:
+    driver: bridge
